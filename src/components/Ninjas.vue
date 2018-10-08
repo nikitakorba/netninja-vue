@@ -28,6 +28,26 @@
       deleteNinja() {
         this.ninjas.pop();
       }
+    },
+    //lifecycle hooks
+    beforeCreate() {
+      console.log("Before Create");
+    },
+    created() {
+      console.log("Created");
+    },
+    beforeMount() {
+      console.log("Before Mount");
+    },
+    mounted() {
+      console.log("Mounted (Manipulating DOM. AfterViewInit)");
+    },
+    beforeUpdate() {
+      console.log("Before update (before change detection)");
+      
+    },
+    updated() {
+      console.log("Updated. After Change detection"); 
     }
   };
 </script>
