@@ -4,27 +4,34 @@
   </footer>
 </template>
 <script>
-  export default {
-    props: {
-      title: {
-        type: String
-      }
-    },
-    data() {
-      return {
-        copyright: `Copyright 2018 Nikita Korba`
-      }
+import { bus } from "../main";
+
+export default {
+  props: {
+    title: {
+      type: String
     }
+  },
+  data() {
+    return {
+      copyright: `Copyright 2018 Nikita Korba`
+    };
+  },
+  created() {
+    bus.$on('titleChanged', (data) => {
+      this.title = data;
+    });
   }
+};
 </script>
 <style scoped>
-  footer {
-    background: #222;
-    padding: 10px;
-  }
+footer {
+  background: #222;
+  padding: 10px;
+}
 
-  p {
-    color: lightgreen;
-    text-align: center;
-  }
+p {
+  color: lightgreen;
+  text-align: center;
+}
 </style>

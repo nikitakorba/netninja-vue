@@ -4,33 +4,36 @@
   </header>
 </template>
 <script>
-  export default {
-    props: {
-      title: {
-        type: String
-      }
-    },
-    data() {
-      return {
-        title: "Vue Ninjas"
-      }
-    },
-    methods: {
-      changeTitle() {
-        this.$emit("changeTitle", "Vue Wizards");
-      }
+import { bus } from "../main";
+export default {
+  props: {
+    title: {
+      type: String
+    }
+  },
+  data() {
+    return {
+      title: "Vue Ninjas"
+    };
+  },
+  methods: {
+    changeTitle() {
+      // this.$emit("changeTitle", "Vue Wizards");
+      this.title = "VUE WIZARDS";
+      bus.$emit("titleChanged", "Vue Wizards");
     }
   }
+};
 </script>
 
 <style scoped>
-  header {
-    background: lightgreen;
-    padding: 10px;
-  }
+header {
+  background: lightgreen;
+  padding: 10px;
+}
 
-  h1 {
-    color: #222;
-    text-align: center;
-  }
+h1 {
+  color: #222;
+  text-align: center;
+}
 </style>
