@@ -1,41 +1,37 @@
 <template>
-  <div>
-    <app-header v-bind:title="title" v-on:changeTitle="updateTitle($event)"></app-header>
-    <app-ninjas :ninjas="ninjas"></app-ninjas>
-    <hr>
-    <app-ninjas :ninjas="ninjas"></app-ninjas>
-    <app-footer v-bind:title="title"></app-footer>
-  </div>
+<div>
+  <form-helper>
+<div slot="form-header">
+  <h3>Some custom title</h3>
+  <p>Info about form</p>
+</div>
+<div slot="form-field">
+  <input type="text" placeholder="name" required>
+  <input type="password" placeholder="password">
+</div>
+<div slot="form-controls">
+  <button @click="handleSubmit" type="submit">Submit</button>
+</div>
+  </form-helper>
+</div>
 </template>
 
 <script>
-import HeaderVue from "./components/Header.vue";
-import FooterVue from "./components/Footer.vue";
-import NinjasVue from "./components/Ninjas.vue";
+import formHelperVue from './components/formHelper.vue';
 
 export default {
   components: {
-    "app-header": HeaderVue,
-    "app-footer": FooterVue,
-    "app-ninjas": NinjasVue
+    "form-helper": formHelperVue
   },
   data() {
     return {
-      ninjas: [
-        { name: "Ryu", speciality: "Vue Components", show: false },
-        { name: "Crystal", speciality: "HTML", show: false },
-        { name: "Hithoshi", speciality: "Events", show: false },
-        { name: "Tango", speciality: "Conditionals", show: false },
-        { name: "Kami", speciality: "Webpack", show: false },
-        { name: "Yoshi", speciality: "Data", show: false }
-      ],
-      title: "Vue Ninjas"
+      title: "Dynamic slot title"
     };
   },
   methods: {
-    updateTitle(event) {
-      this.title = event;
-    }
+    handleSubmit() {
+      console.log("CLICKED");
+        }
   }
 };
 </script>
