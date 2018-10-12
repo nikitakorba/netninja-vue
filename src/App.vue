@@ -1,31 +1,26 @@
 <template>
-<div>
-  <form-helper>
-<div slot="form-header">
-  <h3>Some custom title</h3>
-  <p>Info about form</p>
-</div>
-<div slot="form-field">
-  <input type="text" placeholder="name" required>
-  <input type="password" placeholder="password">
-</div>
-<div slot="form-controls">
-  <button @click="handleSubmit" type="submit">Submit</button>
-</div>
-  </form-helper>
-</div>
+  <div>
+    <keep-alive>
+<component v-bind:is="component"></component>    
+    </keep-alive>
+<button @click="component = 'form-one'">Show form one</button>
+<button @click="component = 'form-two'">Show form two</button>
+  </div>
 </template>
 
 <script>
 import formHelperVue from './components/formHelper.vue';
-
+import formOneVue from './components/formOne.vue';
+import formTwoVue from './components/formTwo.vue';
 export default {
   components: {
-    "form-helper": formHelperVue
+    "form-helper": formHelperVue,
+    "form-one": formOneVue,
+    "form-two": formTwoVue
   },
   data() {
     return {
-      title: "Dynamic slot title"
+      component: 'form-one'
     };
   },
   methods: {
@@ -37,4 +32,28 @@ export default {
 </script>
 
 <style scoped>
+h1{
+    text-align: center;
+}
+form{
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+#useful-links ul{
+    padding: 0;
+}
+#useful-links li{
+    display: inline-block;
+    margin-right: 10px;
+}
+form > div{
+    padding: 20px;
+    background: #eee;
+    margin: 20px 0;
+}
+#form-header{
+    background: #ddd;
+    border: 1px solid #bbb;
+}
 </style>
