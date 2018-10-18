@@ -7,12 +7,26 @@
           <input type="text" v-model.lazy="blog.title" required>
           <label>Blog Content:</label>
           <textarea v-model.lazy="blog.content"></textarea>
+        <div class="checkboxes">
+          <label>Ninjas</label>
+          <input type="checkbox" value="ninjas" v-model="blog.categories">
+          <label>Wizards</label>
+          <input type="checkbox" value="wizards" v-model="blog.categories">
+          <label>Mario</label>
+          <input type="checkbox" value="mario" v-model="blog.categories">
+          <label>Cheese</label>
+          <input type="checkbox" value="cheese" v-model="blog.categories"> 
+      </div>
       </form>
       <div class="preview">
           <h3>Preview Blog</h3>
           <p>Blog title: {{ blog.title }}</p>
           <p>Blog content:</p>
           <p> {{ blog.content }} </p>
+          <p>Blog categories:</p>
+          <ul>
+            <li v-for="category in blog.categories" v-bind:key="category">{{ category }}</li>
+          </ul>
       </div>
   </div>
 
@@ -25,7 +39,8 @@ export default {
     return {
       blog: {
         title: "",
-        content: ""
+        content: "",
+        categories: []
       }
     };
   },
@@ -45,7 +60,7 @@ label {
   display: block;
   margin: 20px 0 10px;
 }
-input,
+input[type="text"],
 textarea {
   display: block;
   width: 100%;
@@ -58,5 +73,14 @@ textarea {
 }
 h3 {
   margin-top: 30px;
+}
+
+.checkboxes input {
+  display: inline-block;
+  margin-right: 0;
+}
+
+.checkboxes label {
+  display: inline-block;
 }
 </style>
