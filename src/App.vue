@@ -1,8 +1,6 @@
 <template>
   <div>
-    <add-blog></add-blog>
-    <show-blogs></show-blogs>
-    <list-blogs></list-blogs>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -13,9 +11,9 @@ import listBlogs from "./components/listBlogs.vue";
 
 export default {
   components: {
-    'add-blog': addBlog,
-    'show-blogs': showBlogs,
-    'list-blogs': listBlogs
+    "add-blog": addBlog,
+    "show-blogs": showBlogs,
+    "list-blogs": listBlogs
   },
   data() {
     return {};
@@ -27,6 +25,6 @@ export default {
 <style>
 body {
   margin: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 </style>

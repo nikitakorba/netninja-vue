@@ -1,5 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VueRouter from 'vue-router';
+import Routes from "./routes";
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+  routes: Routes
+});
 
 // Custom directives
 Vue.directive("theme", {
@@ -22,5 +30,6 @@ Vue.directive("theme", {
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
+  router: router
 });
