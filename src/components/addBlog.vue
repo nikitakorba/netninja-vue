@@ -58,30 +58,19 @@ export default {
   },
   methods: {
     addBlog() {
-      fetch("https://jsonplaceholder.typicode.com/posts", {
+      fetch("https://thenetninja-vuejs.firebaseio.com/posts.json", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          title: this.blog.title,
-          body: this.blog.content,
-          userId: 12345
-        })
+        body: JSON.stringify(this.blog)
       })
         .then(data => data.json())
         .then(res => {
           console.log(res)
           this.submitted = true;
           });
-      // fetch("https://jsonplaceholder.typicode.com/posts", {
-      //   title: this.blog.title,
-      //   body: this.blog.content,
-      //   userId: 12345
-      // })
-      // .then((data) => data.json())
-      // .then((res) =>  console.log(res));
     }
   }
 };
