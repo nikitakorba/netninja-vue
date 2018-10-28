@@ -2,8 +2,12 @@
   <div id="single-blog">
       <h1>{{ blog.title }}</h1>
       <article>
-          {{ blog.body }}
+          {{ blog.content }}
       </article>
+      <p>Author: {{blog.author}}</p>
+      <ul>
+          <li v-for="category in blog.categories" v-bind:key="category">{{ category }}</li>
+      </ul>
   </div>  
 </template>
 
@@ -16,10 +20,9 @@ export default {
     };
   },
   created() {
-    fetch(`http://jsonplaceholder.typicode.com/posts/${this.id}`)
+    fetch(`https://thenetninja-vuejs.firebaseio.com/posts/${this.id}.json`)
       .then(res => res.json())
       .then(res => {
-          console.log(res);
           this.blog = res;
           });
   }
