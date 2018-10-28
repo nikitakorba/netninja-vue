@@ -1,44 +1,33 @@
 <template>
   <div>
-    <app-header v-bind:title="title" v-on:changeTitle="updateTitle($event)"></app-header>
-    <app-ninjas :ninjas="ninjas"></app-ninjas>
-    <hr>
-    <app-ninjas :ninjas="ninjas"></app-ninjas>
-    <app-footer v-bind:title="title"></app-footer>
+    <app-header></app-header>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HeaderVue from "./components/Header.vue";
-import FooterVue from "./components/Footer.vue";
-import NinjasVue from "./components/Ninjas.vue";
+import addBlog from "./components/addBlog.vue";
+import showBlogs from "./components/showBlogs.vue";
+import listBlogs from "./components/listBlogs.vue";
+import header from "./components/header.vue";
 
 export default {
   components: {
-    "app-header": HeaderVue,
-    "app-footer": FooterVue,
-    "app-ninjas": NinjasVue
+    "add-blog": addBlog,
+    "show-blogs": showBlogs,
+    "list-blogs": listBlogs,
+    "app-header": header
   },
   data() {
-    return {
-      ninjas: [
-        { name: "Ryu", speciality: "Vue Components", show: false },
-        { name: "Crystal", speciality: "HTML", show: false },
-        { name: "Hithoshi", speciality: "Events", show: false },
-        { name: "Tango", speciality: "Conditionals", show: false },
-        { name: "Kami", speciality: "Webpack", show: false },
-        { name: "Yoshi", speciality: "Data", show: false }
-      ],
-      title: "Vue Ninjas"
-    };
+    return {};
   },
-  methods: {
-    updateTitle(event) {
-      this.title = event;
-    }
-  }
+  methods: {}
 };
 </script>
 
-<style scoped>
+<style>
+body {
+  margin: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
 </style>
